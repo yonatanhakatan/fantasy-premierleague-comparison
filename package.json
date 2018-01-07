@@ -5,5 +5,23 @@
   "main": "index.js",
   "repository": "git@github.com:yonatanhakatan/fantasy-premierleague-comparison.git",
   "author": "Jonny Levy <jonny@jonnylevy.me>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel public/index.html"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "parcel-bundler": "^1.4.1"
+  }
 }
