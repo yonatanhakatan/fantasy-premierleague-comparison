@@ -1,0 +1,9 @@
+{
+  "name": "fantasy-premierleague-comparison",
+  "version": "0.1.0",
+  "description": "A tool to compare players for the Fantasy Premier League game",
+  "main": "index.js",
+  "repository": "git@github.com:yonatanhakatan/fantasy-premierleague-comparison.git",
+  "author": "Jonny Levy <jonny@jonnylevy.me>",
+  "license": "MIT"
+}
