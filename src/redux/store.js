@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
-import card from './defaults/card';
+import cards from './defaults/cards';
 
 const defaultState = {
-  card,
+  cards,
 };
 
 export default createStore(
