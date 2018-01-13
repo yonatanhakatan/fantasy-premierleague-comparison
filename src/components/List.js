@@ -1,7 +1,19 @@
 import styled from 'styled-components';
 
-export default styled.ul`
+const List = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
+  ${(props) => {
+    if (props.horizontal) {
+      return `
+        display: flex;
+        flex-direction: row;
+      `;
+    }
+
+    return null;
+  }}
 `;
+
+export default List;
