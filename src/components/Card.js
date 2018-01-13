@@ -4,8 +4,10 @@ import List from './List';
 
 const renderStats = stats => (
   <List>
-    {Object.entries(stats).map(stat => (
-      <li>
+    {Object.entries(stats).map((stat, index) => (
+      <li
+        key={index} // eslint-disable-line react/no-array-index-key
+      >
         <b>{stat[0]}:</b> {stat[1]}
       </li>
     ))}
@@ -37,7 +39,7 @@ Card.propTypes = {
   club: PropTypes.string.isRequired,
   position: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
-  stats: PropTypes.shape.isRequired,
+  stats: PropTypes.shape().isRequired,
 };
 
 export default Card;
