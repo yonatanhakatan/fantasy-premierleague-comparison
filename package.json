@@ -7,7 +7,8 @@
   "author": "Jonny Levy <jonny@jonnylevy.me>",
   "license": "MIT",
   "scripts": {
-    "start": "parcel public/index.html"
+    "start": "parcel public/index.html",
+    "test": "jest"
   },
   "dependencies": {
     "prop-types": "^15.6.0",
@@ -27,6 +28,7 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
+    "jest": "^22.0.6",
     "parcel-bundler": "^1.4.1"
   }
 }
