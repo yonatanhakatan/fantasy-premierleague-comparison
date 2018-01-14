@@ -1,23 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import * as actionCreators from '../redux/actions';
+import * as playersActionCreators from '../redux/actions/players';
 import Card from './Card';
 import List from './List';
 
-const mapStateToProps = (state) => {
-  const {
-    cards,
-  } = state;
+const mapStateToProps = state => state;
 
-  return {
-    cards,
-  };
-};
-
-const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
+const mapDispatchToProps = dispatch => ({
+  playersActions: bindActionCreators(playersActionCreators, dispatch),
+});
 
 const CardGroup = styled.div`
   display: flex;
@@ -25,46 +19,64 @@ const CardGroup = styled.div`
   align-items: center;
 `;
 
-const renderCards = players => (
-  players.map((player, index) => (
+const renderCards = cards => (
+  cards.map((card, index) => (
     <li
-      key={player.id}
+      key={card.id}
     >
       <CardGroup>
         {(index > 0) &&
           <strong>V</strong>
         }
-        <Card
-          {...player}
-        />
+        {!card.isPlaceholder &&
+          <Card
+            {...card}
+          />
+        }
+        {card.isPlaceholder &&
+          <div>
+            Please add a player using the search box above
+          </div>
+        }
       </CardGroup>
     </li>
   ))
 );
 
-const Main = (props) => {
-  const {
-    cards: {
-      players,
-    },
-  } = props;
+class Main extends Component {
+  componentDidMount() {
+    const {
+      playersActions: {
+        getPlayersData,
+      },
+    } = this.props;
 
-  if (!players) {
-    return null;
+    getPlayersData();
   }
 
-  return (
-    <List
-      horizontal
-    >
-      {renderCards(players)}
-    </List>
-  );
-};
+  render() {
+    const {
+      cards,
+    } = this.props;
+
+    if (!cards.length) {
+      return null;
+    }
+
+    return (
+      <List
+        horizontal
+      >
+        {renderCards(cards)}
+      </List>
+    );
+  }
+}
 
 Main.propTypes = {
-  cards: PropTypes.shape({
-    players: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  cards: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  playersActions: PropTypes.shape({
+    getPlayersData: PropTypes.func.isRequired,
   }).isRequired,
 };
 
