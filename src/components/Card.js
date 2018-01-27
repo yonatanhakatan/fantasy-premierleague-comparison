@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CardData from './CardData';
 import CardDataMissing from './CardDataMissing';
+import Search from './Search';
 
 const Card = (props) => {
   const {
@@ -10,6 +11,7 @@ const Card = (props) => {
 
   return (
     <section>
+      <Search />
       {id &&
         <CardData {...props} />
       }
