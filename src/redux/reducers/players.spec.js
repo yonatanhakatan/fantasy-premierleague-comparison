@@ -21,9 +21,19 @@ it('Should return the correct state when the get players data action is called',
     },
   }];
 
-  expect(playersReducer([], {
+  const initialState = {
+    all: [],
+    filtered: [],
+  };
+
+  const expectedState = {
+    all: playersData,
+    filtered: [],
+  };
+
+  expect(playersReducer(initialState, {
     type: 'PLAYERS_GET_DATA',
     players: playersData,
   }))
-    .toEqual(playersData);
+    .toEqual(expectedState);
 });
