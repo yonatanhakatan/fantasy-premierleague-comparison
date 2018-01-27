@@ -1,45 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import List from './List';
-
-const renderStats = stats => (
-  <List>
-    {Object.entries(stats).map((stat, index) => (
-      <li
-        key={index} // eslint-disable-line react/no-array-index-key
-      >
-        <b>{stat[0]}:</b> {stat[1]}
-      </li>
-    ))}
-  </List>
-);
+import CardData from './CardData';
+import CardDataMissing from './CardDataMissing';
 
 const Card = (props) => {
   const {
-    name,
-    club,
-    position,
-    imageUrl,
-    stats,
+    id,
   } = props;
 
   return (
     <section>
-      <h2>{name}</h2>
-      <h3>{club}</h3>
-      <div>{position}</div>
-      <img src={imageUrl} alt={name} />
-      {renderStats(stats)}
+      {id &&
+        <CardData {...props} />
+      }
+      {!id &&
+        <CardDataMissing />
+      }
     </section>
   );
 };
 
+Card.defaultProps = {
+  id: null,
+};
+
 Card.propTypes = {
-  name: PropTypes.string.isRequired,
-  club: PropTypes.string.isRequired,
-  position: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
-  stats: PropTypes.shape().isRequired,
+  id: PropTypes.number,
 };
 
 export default Card;

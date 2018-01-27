@@ -22,22 +22,15 @@ const CardGroup = styled.div`
 const renderCards = cards => (
   cards.map((card, index) => (
     <li
-      key={card.id}
+      key={index} // eslint-disable-line react/no-array-index-key
     >
       <CardGroup>
         {(index > 0) &&
           <strong>V</strong>
         }
-        {!card.isPlaceholder &&
-          <Card
-            {...card}
-          />
-        }
-        {card.isPlaceholder &&
-          <div>
-            Please add a player using the search box above
-          </div>
-        }
+        <Card
+          {...card}
+        />
       </CardGroup>
     </li>
   ))
